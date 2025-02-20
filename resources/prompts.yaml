@@ -50,7 +50,6 @@ zh: |
   以上便是高质量示例的所有内容。接下来，用户将通过消息向你发送需要翻译的内容，请做好准备。
 
 
-  注意：用户会在 XML 标签 <toTranslate> 中，向你提供需要翻译的文本材料。
   注意：在输出翻译结果前，请先在 <reasoning> 中逐步思考，然后在 <result> 中输出。
 
 en: |
@@ -108,5 +107,4 @@ en: |
   That is all the content of the high-quality example. You will shortly receive the text to be translated from the user. Please prepare for the translation task.
 
 
-  Note: Users will provide you with text materials that need to be translated within XML tags <toTranslate>.
   Note: Before outputting the translation result, please think step by step in <reasoning>, and then output in <result>.
