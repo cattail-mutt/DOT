@@ -259,12 +259,12 @@
 }
 
 .config-save,
-#gm-new-prompt-btn,
-#gm-manage-prompt-btn,
+#new-prompt-btn,
+#manage-prompt-btn,
 button[data-edit],
 button[data-del],
 button[data-save-edit],
-#gm-save-new-prompt-btn {
+#save-new-prompt-btn {
     padding: 6px 12px;
     margin: 4px;
     background: #2d2d2d;
@@ -277,12 +277,12 @@ button[data-save-edit],
 }
 
 .config-save:hover,
-#gm-new-prompt-btn:hover,
-#gm-manage-prompt-btn:hover,
+#new-prompt-btn:hover,
+#manage-prompt-btn:hover,
 button[data-edit]:hover,
 button[data-del]:hover,
 button[data-save-edit]:hover,
-#gm-save-new-prompt-btn:hover {
+#save-new-prompt-btn:hover {
     background: #404040;
     border-color: #666;
 }
@@ -293,7 +293,7 @@ button[data-save-edit]:hover,
     margin: 8px 0;
 }
 
-#gm-prompt-actions {
+#prompt-actions {
     background: #262626;
     border-radius: 4px;
     padding: 12px;
@@ -311,7 +311,7 @@ button[data-del] {
 }
 
 button[data-save-edit],
-#gm-save-new-prompt-btn {
+#save-new-prompt-btn {
     background: #2b7738;
     border-color: #1e542a;
 }
