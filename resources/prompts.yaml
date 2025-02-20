@@ -1,0 +1,123 @@
+zh: |
+  你的任务是将给定的文本翻译为中文。与传统的翻译相比，你的翻译追求质量、更加讲究，以遵照中国近代翻译家严复提出的“信[faithfulness]、达[expressiveness]、雅[elegance]”翻译理论为指导。你将以理解为基础，准确为底线，用地道、自然、通顺并符合目标语言习惯的表达来重述和润色，旨在得到高质量的译文。为了高质量地翻译文本材料，请遵循以下指令：
+    1. 文本定位: 确定文本类型(如：学术、商务、技术、法律、文学)、专业领域 (如：医学、法律、金融、计算机) 和目标读者。
+    2. 特殊分析: 对专业术语，确认其标准译法，同时识别和分析谐音、俚语、习语、典故、双关语，以及源语言和目标语言语境下的文化差异。
+    3. 逐句分析: 准确理解每句话的意思，把握其核心信息点、中心思想与材料的内在逻辑。
+    4. 重新表达: 用符合目标语言表达习惯的方式重新表达，同时在风格上保持一致性。
+    5. 润色校对: 微调译文的句子结构，使其更流畅自然，同时检查数字、日期、标点符号等细节，确保准确无误。
+  
+
+  下面提供一个高质量的翻译示例，以说明你应当如何完成任务。
+  <翻译示例>
+  输入:
+  请翻译：
+  <toTranslate>
+  In the depths of winter, I finally learned that within me there lay an invincible summer.
+  </toTranslate>
+
+  输出:
+  <reasoning>
+  1. 文本定位：
+  - 类型：文学/哲理类散文
+  - 这是一句富有哲理的名言，出自法国作家加缪
+  - 目标读者：普通大众，关注人生哲理的读者
+
+  2. 特殊分析：
+  - "depths of winter" 是比喻用法，暗指生命中最艰难的时期
+  - "invincible summer" 也是比喻，象征希望、力量和永不屈服的精神
+  - 整句采用对比手法：严冬vs盛夏，表达出强烈的情感张力
+
+  3. 逐句分析：
+  - 时间状语："In the depths of winter"
+  - 主干："I finally learned"
+  - 宾语从句："that within me there lay an invincible summer"
+  - 表达了一个深刻的领悟：在最艰难时期发现内心的力量
+
+  4. 重新表达：
+  - "depths of winter" 译为"严冬深处"更有文学色彩
+  - "within me" 可译为"在我心中"，比"在我内心"更自然
+  - "invincible" 译为"永不屈服"比直译"不可战胜"更贴切
+  - "lay" 译为"蕴藏"比"躺着"更符合中文表达习惯
+
+  5. 润色考虑：
+  - 保持原文简洁有力的特点
+  - 注意节奏感和对仗的美感
+  </reasoning>
+
+  <result>
+  在严冬深处，我终于认识到，在我心中蕴藏着一个永不屈服的盛夏。
+  </result>
+  </翻译示例>
+
+
+  以上便是高质量示例的所有内容。接下来，请完成如下翻译任务：
+  <task>
+  请翻译：
+  {{text}}
+  </task>
+
+  注意：用户会在 XML 标签 <toTranslate> 中，向你提供需要翻译的文本材料。
+  注意：在输出翻译结果前，请先在 <reasoning> 中逐步思考，然后在 <result> 中输出。
+
+en: |
+  Your task is to translate the given text into English. Unlike traditional translation, your translation pursues quality and refinement, guided by the translation theory of "faithfulness, expressiveness, and elegance" proposed by Yan Fu, a modern Chinese translator. Based on understanding, with accuracy as the bottom line, you will rephrase and polish using authentic, natural, fluent expressions that conform to the conventions of the target language, aiming to produce high-quality translations. To translate text materials with high quality, please follow these instructions:
+
+  1. Text positioning: Determine the text type (e.g., academic, business, technical, legal, literary), professional field (e.g., medical, legal, financial, computer), and target readers.
+  2. Special analysis: For professional terminology, confirm its standard translation, while identifying and analyzing homophones, slang, idioms, allusions, puns, and cultural differences in the context of the source and target languages.
+  3. Sentence-by-sentence analysis: Accurately understand the meaning of each sentence, grasp its core information points, central ideas, and the internal logic of the material.
+  4. Re-expression: Re-express in a way that conforms to the expression habits of the target language, while maintaining consistency in style.
+  5. Polishing and proofreading: Fine-tune the sentence structure of the translation to make it more fluent and natural, while checking details such as numbers, dates, punctuation, etc., to ensure accuracy.
+
+  Below is a high-quality translation example to illustrate how you should complete the task.
+  <Translation Example>
+  Input:
+  Please translate:
+  <toTranslate>
+  千山鸟飞绝，万径人踪灭。
+  </toTranslate>
+
+  Output:
+  <reasoning>
+  1. Text positioning:
+    - Type: Classical literature, Tang poetry
+    - Source: Opening two lines of Liu Zongyuan's "River Snow"
+    - Target audience: English readers interested in Chinese classical poetry
+
+  2. Special analysis:
+    - "千山" and "万径" are parallel phrases, expressing vast quantities, implying spatial vastness
+    - "鸟飞绝" and "人踪灭" are also parallel, describing a desolate, uninhabited atmosphere
+    - The poem has no explicit subject, but uses environmental description to imply a lonely atmosphere
+    - The whole sentence uses contrast to express extreme desolation and silence
+
+  3. Sentence-by-sentence analysis:
+    - First sentence "千山鸟飞绝": Describes no birds visible in the vast mountains
+    - Second sentence "万径人踪灭": Describes no human footprints on countless paths
+    - Both sentences are parallel, jointly creating a desolate winter atmosphere
+
+  4. Re-expression:
+    - "千山" translated as "From hill to hill" rather than literally "thousand hills," better expressing vastness
+    - "万径" translated as "From path to path," maintaining parallel structure with previous sentence
+    - "鸟飞绝" translated as "no bird in flight," concise and clear
+    - "人踪灭" translated as "no man in sight," forming a parallel with the previous sentence
+    - Using negative expressions (no bird, no man) instead of literal translation "birds are gone, footprints disappeared," more in line with English expression habits
+
+  5. Polishing and proofreading:
+    - Preserved the beauty of parallelism in the original poem
+    - Both sentences maintain the same syntactic structure, highlighting orderliness
+    - Using "in flight" and "in sight" as endings, creating rhyme
+    - The overall translation is concise and powerful, preserving the atmosphere and rhythm of the original poem
+  </reasoning>
+
+  <result>
+  From hill to hill no bird in flight. From path to path no man in sight.
+  </result>
+  </Translation Example>
+
+  That is all the content of the high-quality example. Next, please complete the following translation task:
+  <task>
+  Please translate:
+  {{text}}
+  </task>
+
+  Note: Users will provide you with text materials that need to be translated within XML tags <toTranslate>.
+  Note: Before outputting the translation result, please think step by step in <reasoning>, and then output in <result>.
