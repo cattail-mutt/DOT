@@ -1,59 +1,330 @@
-.float-btn {
+.config-panel {
     position: fixed;
-    width: 40px;
-    height: 40px;
-    background: #2c3e50;
-    border-radius: 50%;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    max-height: 90vh;
+    background: #2d2d2d;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    color: #fff;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+}
+.config-panel.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+.config-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    border-bottom: 1px solid #404040;
+}
+.config-title {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+.config-close {
     cursor: pointer;
+    color: #888;
+    font-size: 20px;
+    line-height: 1;
+    margin-top: -2px;
+    transition: color 0.2s;
+    padding: 4px;
+}
+.config-close:hover {
+    color: #fff;
+}
+.config-body {
+    padding: 12px 16px;
+    overflow-y: auto;
+    flex: 1;
+}
+.config-body::-webkit-scrollbar {
+    width: 8px;
+}
+.config-body::-webkit-scrollbar-track {
+    background: #1e1e1e;
+}
+.config-body::-webkit-scrollbar-thumb {
+    background-color: #666;
+    border-radius: 4px;
+}
+.config-body::-webkit-scrollbar-thumb:hover {
+    background-color: #888;
+}
+.config-body label {
+    display: block;
+    margin-top: 8px;
+    font-size: 13px;
+}
+.config-body input, .config-body textarea, .config-body select {
+    width: 100%;
+    margin-top: 4px;
+    padding: 6px;
+    border: 1px solid #666;
+    border-radius: 4px;
+    background: #1e1e1e;
+    color: #fff;
+    font-size: 13px;
+    box-sizing: border-box;
+}
+.config-body textarea {
+    resize: vertical;
+    height: 100px;
+}
+.config-save {
+    padding: 6px 12px;
+    background: #444;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #fff;
+}
+.config-save:hover {
+    background: #555;
+}
+
+.alert {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 13px;
+    z-index: 100000;
+    opacity: 0;
+    animation: alertSlide 0.3s forwards;
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: white;
-    z-index: 9999;
+    max-width: 80%;
 }
-  
+@keyframes alertSlide {
+    from { opacity: 0; transform: translate(-50%, -10px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+}
+.alert.hide {
+    animation: alertFade 0.3s forwards;
+}
+@keyframes alertFade {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+.alert-success {
+    background: #2e7d32;
+    color: #fff;
+    border: 1px solid #1b5e20;
+}
+.alert-error {
+    background: #c62828;
+    color: #fff;
+    border: 1px solid #b71c1c;
+}
+.alert-warning {
+    background: #f9a825;
+    color: #fff;
+    border: 1px solid #f57f17;
+}
+
+.float-btn {
+    position: fixed;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #333;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    z-index: 999999999;
+    pointer-events: auto;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
 .translate-panel {
     position: fixed;
     left: 20px;
     bottom: 20px;
+    z-index: 99999;
     width: 300px;
-    background: #2c3e50;
+    background: #2d2d2d;
     border-radius: 8px;
-    color: white;
-    padding: 15px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    color: #fff;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
-
-.translate-panel .title {
+.translate-panel.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+.translate-header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
-    }
-
-.translate-panel .close {
+    align-items: center;
+    padding: 14px 16px;
+    border-bottom: 1px solid #404040;
+}
+.translate-title {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+.translate-close {
     cursor: pointer;
+    color: #888;
+    font-size: 20px;
+    line-height: 1;
+    margin-top: -2px;
+    transition: color 0.2s;
+    padding: 4px;
+}
+.translate-close:hover {
+    color: #fff;
+}
+.translate-body {
+    padding: 12px 16px;
+    font-size: 13px;
+    line-height: 1.4;
+    min-height: 80px;
+    max-height: 66vh; 
+    overflow-y: auto;
+}
+.translate-text {
+    white-space: pre-wrap;
+    color: #fff;
+}
+.translate-error {
+    color: red;
+    white-space: pre-wrap;
+}
+.translate-loading {
+    color: #32CD32;
+    margin-bottom: 8px;
+}
+.translate-body::-webkit-scrollbar {
+    width: 8px;
+}
+.translate-body::-webkit-scrollbar-track {
+    background: #1e1e1e;
+}
+.translate-body::-webkit-scrollbar-thumb {
+    background-color: #666;
+    border-radius: 4px;
+}
+.translate-body::-webkit-scrollbar-thumb:hover {
+    background-color: #888;
 }
 
-.config-panel {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #2c3e50;
-    padding: 20px;
-    border-radius: 8px;
-    color: white;
-    min-width: 300px;
+.config-body fieldset {
+    border: 1px solid #404040;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 16px;
 }
 
-.loading {
-    display: inline-block;
-    animation: spin 1s linear infinite;
+.config-body legend {
+    color: #888;
+    font-size: 13px;
+    padding: 0 8px;
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+.config-body input[type="text"],
+.config-body input[type="number"],
+.config-body textarea {
+    width: 100%;
+    padding: 8px 10px;
+    margin: 4px 0 12px;
+    background: #1e1e1e;
+    border: 1px solid #404040;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 13px;
+    transition: border-color 0.2s;
+}
+
+.config-body input:focus,
+.config-body textarea:focus {
+    border-color: #666;
+    outline: none;
+}
+
+.config-save,
+#gm-new-prompt-btn,
+#gm-manage-prompt-btn,
+button[data-edit],
+button[data-del],
+button[data-save-edit],
+#gm-save-new-prompt-btn {
+    padding: 6px 12px;
+    margin: 4px;
+    background: #2d2d2d;
+    border: 1px solid #404040;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.config-save:hover,
+#gm-new-prompt-btn:hover,
+#gm-manage-prompt-btn:hover,
+button[data-edit]:hover,
+button[data-del]:hover,
+button[data-save-edit]:hover,
+#gm-save-new-prompt-btn:hover {
+    background: #404040;
+    border-color: #666;
+}
+
+.prompt-btn-group {
+    display: flex;
+    gap: 8px;
+    margin: 8px 0;
+}
+
+#gm-prompt-actions {
+    background: #262626;
+    border-radius: 4px;
+    padding: 12px;
+    margin-top: 12px;
+}
+
+button[data-edit] {
+    background: #2b5797;
+    border-color: #1e3c6e;
+}
+
+button[data-del] {
+    background: #972b2b;
+    border-color: #6e1e1e;
+}
+
+button[data-save-edit],
+#gm-save-new-prompt-btn {
+    background: #2b7738;
+    border-color: #1e542a;
+}
+
+.config-save {
+    background: #2b5797;
+    border-color: #1e3c6e;
+    margin: 16px;
+    padding: 8px 16px;
+}
+
+.config-footer {
+    padding: 8px;
+    text-align: right;
+    border-top: 1px solid #404040;
 }
