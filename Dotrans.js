@@ -29,7 +29,7 @@
     const styleText = GM_getResourceText('STYLE');
     const promptsText = GM_getResourceText('PROMPTS');
     GM_addStyle(styleText);
-    GM_registerMenuCommand('翻译脚本配置', () => {
+    GM_registerMenuCommand('打开配置面板', () => {
         openConfigPanel();
     });
 

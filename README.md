@@ -10,7 +10,7 @@ Dotrans 是一款基于 OpenAI [Compatible] API 的划词翻译小工具，支�
 
 ## 配置说明
 
-通过菜单中的 "翻译脚本配置" 选项，可以设置以下参数：
+通过菜单中的 "打开配置面板" 选项，可以设置以下参数：
 
 - **API 配置**
 
@@ -30,3 +30,8 @@ Dotrans 是一款基于 OpenAI [Compatible] API 的划词翻译小工具，支�
 ## 依赖项
 
 - [js-yaml.min.js](https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js) - 用于解析 YAML 格式的 Prompt 文件
+
+## 鸽子计划
+
+1. 自定义配置：为不同站点配置默认提示词选项。
+...
