@@ -10,10 +10,7 @@ zh: |
   下面提供一个高质量的翻译示例，以说明你应当如何完成任务。
   <翻译示例>
   输入:
-  请翻译：
-  <toTranslate>
   In the depths of winter, I finally learned that within me there lay an invincible summer.
-  </toTranslate>
 
   输出:
   <reasoning>
@@ -68,10 +65,7 @@ en: |
   Below is a high-quality translation example to illustrate how you should complete the task.
   <Translation Example>
   Input:
-  Please translate:
-  <toTranslate>
   千山鸟飞绝，万径人踪灭。
-  </toTranslate>
 
   Output:
   <reasoning>
