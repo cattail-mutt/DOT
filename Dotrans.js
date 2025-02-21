@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Dotrans
+// @name         DOT
 // @namespace    https://github.com/cattail-mutt/
 // @version      1.0
-// @description  圆点翻译：划词翻译，支持 OpenAI API 与流式输出。
+// @description  圆点：选中文本，与 OpenAI [Compatible] API 交互，支持 Markdown 渲染、流式输出。
 // @author       Mukai
 // @match        *://*/*
 // @grant        GM_xmlhttpRequest
@@ -11,21 +11,29 @@
 // @grant        GM_addStyle
 // @grant        GM_getResourceText
 // @grant        GM_registerMenuCommand
-// @resource     STYLE https://raw.githubusercontent.com/cattail-mutt/dotrans/refs/heads/main/resources/style.css
-// @resource     PROMPTS https://raw.githubusercontent.com/cattail-mutt/dotrans/refs/heads/main/resources/prompts.yaml
+// @resource     STYLE https://raw.githubusercontent.com/cattail-mutt/DOT/refs/heads/main/resources/style.css
+// @resource     PROMPTS https://raw.githubusercontent.com/cattail-mutt/DOT/refs/heads/main/resources/prompts.yaml
 // @require      https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js
+// @require      https://cdn.jsdelivr.net/npm/marked/marked.min.js
+// @require      https://raw.githubusercontent.com/cattail-mutt/archive/refs/heads/main/openai/chatCompletion.js
 // ==/UserScript==
 
 (function () {
     'use strict';
     
     const DEFAULT_CONFIG = {
-        endpoint: 'https://api.openai.com/v1/chat/completions',
-        model: 'gpt-4o-mini',
+        endpoint: 'https://api.fakeapi.com/v1/chat/completions',
+        model: 'gemini-2.0-pro-exp',
         apiKey: '',
-        temperature: 0.7,
+        temperature: 1.0,
         currentPromptIndex: 0,
     };
+
+    function handleError(error, context = '') {
+        console.error(`[DOT] Error${context ? ` in ${context}` : ''}: `, error);
+        showAlert(error.message || '操作失败', 'error');
+    }
+
     const styleText = GM_getResourceText('STYLE');
     const promptsText = GM_getResourceText('PROMPTS');
     GM_addStyle(styleText);
@@ -33,8 +41,8 @@
         openConfigPanel();
     });
 
-    console.log(`[Dotrans] Info: CSS 解析完成（前80个字符）： ${styleText.substring(0, 80)}...`);
-    console.log('[Dotrans] Info: Prompts 解析完成（前80个字符）：', promptsText.substring(0, 80) + '...');
+    console.log(`[DOT] Info: CSS 解析完成（前80个字符）： ${styleText.substring(0, 80)}...`);
+    console.log('[DOT] Info: Prompts 解析完成（前80个字符）：', promptsText.substring(0, 80) + '...');
 
     function showAlert(message, type = 'success', duration = 3000) {
         const existingAlert = document.querySelector('.alert');
@@ -87,9 +95,9 @@
     }
 
     function updatePromptDatalist(panel) {
-        const curCfg = getConfig();
+        const currentConfig = getConfig();
         const datalist = panel.querySelector('#prompt-selector-list');
-        datalist.innerHTML = renderPromptOptions(curCfg.systemPrompts);
+        datalist.innerHTML = renderPromptOptions(currentConfig.systemPrompts);
     }
 
     function renderPromptActions(systemPrompts) {
@@ -255,6 +263,10 @@
             const temperature = parseFloat(configPanel.querySelector('#temperature').value);
             const apiKey = configPanel.querySelector('#apikey').value.trim();
             let cfg = getConfig();
+            const newPromptIndex = configPanel.dataset.currentPromptIndex;
+            if (newPromptIndex !== undefined) {
+                cfg.currentPromptIndex = parseInt(newPromptIndex, 10);
+            }
             cfg.endpoint = endpoint;
             cfg.model = model;
             cfg.temperature = temperature;
@@ -271,10 +283,10 @@
 
     let targetX = 0, targetY = 0;
     let currentX = 0, currentY = 0;
-    let freezeBtn = false;
+    let isButtonFrozen = false;
 
     document.addEventListener('mousemove', (e) => {
-        if (!freezeBtn) {
+        if (!isButtonFrozen) {
             targetX = e.clientX + 30;
             targetY = e.clientY + 30;
         }
@@ -297,159 +309,119 @@
     document.addEventListener('mouseup', () => {
         const selectedText = window.getSelection().toString().trim();
         if (selectedText) {
-            console.log('[Dotrans] Info: 当前选中内容:', selectedText);
+            console.log('[DOT] Info: 当前选中内容:', selectedText);
             lastSelectedText = selectedText;
-            freezeBtn = true;
+            isButtonFrozen = true;
             if (selectionTimer) {
                 clearTimeout(selectionTimer);
             }
             selectionTimer = setTimeout(() => {
-                freezeBtn = false;
+                isButtonFrozen = false;
             }, 5000);
         }
     });
 
-    let translatePanel = null;
+    let dotPanel = null;
 
-    floatingBtn.addEventListener('click', () => {
-        const selectedText = lastSelectedText;
-        console.log('[Dotrans] Info: 当前选中内容:', selectedText);
+    floatingBtn.addEventListener('click', async () => {
+        try {
+            const selectedText = lastSelectedText;
+            console.log('[DOT] Info: 当前选中内容:', selectedText);
 
-        if (!selectedText) {
-            console.log('[Dotrans] Info: 未收到任何文本，不执行翻译流程');
-            return;
+            if (!selectedText) {
+                console.log('[DOT] Info: 未收到任何文本，不执行 API 调用流程');
+                return;
+            }
+
+            showDotPanel();
+
+            const dotBody = dotPanel.querySelector('.dot-body');
+            dotBody.innerHTML = `
+                <div class="dot-text" id="DotContent"></div>
+            `;
+
+            let dotCount = 1;
+            const dotTitle = dotPanel.querySelector('.dot-title');
+            dotTitle.textContent = '请稍候';
+            const loadingTimer = setInterval(() => {
+                dotCount = (dotCount % 3) + 1;
+                dotTitle.textContent = '请稍候' + '.'.repeat(dotCount);
+            }, 500);
+
+            const cfg = getConfig();
+            if (!cfg.apiKey) {
+                throw new Error('未设置 API Key');
+            }
+
+            const selectedPrompt = cfg.systemPrompts[cfg.currentPromptIndex];
+            if (!selectedPrompt) {
+                throw new Error('未找到指定的 System Prompt');
+            }
+
+            // 输出完成前：使用 code pre 实时更新流的消息内容
+            const dotContent = document.getElementById('DotContent');
+            let rawText = '';
+            dotContent.innerHTML = '<pre><code></code></pre>';
+            const codeElement = dotContent.querySelector('code');
+
+            await window.chatCompletion({
+                endpoint: cfg.endpoint,
+                model: cfg.model,
+                apiKey: cfg.apiKey,
+                messages: [
+                    { role: 'system', content: selectedPrompt.prompt },
+                    { role: 'user', content: selectedText }
+                ]
+            }, (chunk) => {
+                rawText += chunk;
+                codeElement.textContent = rawText;
+            });
+            
+            clearInterval(loadingTimer);
+            dotTitle.textContent = '输出结果';
+            // 输出完成后：将 code pre 中的内容进行转义并使用 marked 渲染后替换
+            dotContent.innerHTML = marked.parse(escapeHtml(rawText));
+            console.log('[DOT] Info: 处理完成，原始响应为：', rawText);
+        } catch (error) {
+            handleError(error, 'dotProcess');
         }
-
-        showTranslatePanel();
-
-        const translateBody = translatePanel.querySelector('.translate-body');
-        translateBody.innerHTML = `
-            <div class="translate-loading" id="gmLoadingText">🔍翻译中.</div>
-            <div class="translate-text" id="gmTranslateContent"></div>
-        `;
-
-        let dotCount = 1;
-        const loadingEl = document.getElementById('gmLoadingText');
-        const loadingTimer = setInterval(() => {
-            dotCount = (dotCount % 3) + 1;
-            loadingEl.textContent = '🔍翻译中' + '.'.repeat(dotCount);
-        }, 500);
-
-        const cfg = getConfig();
-        if (!cfg.apiKey) {
-            clearInterval(loadingTimer);
-            translateBody.innerHTML = `<div class="translate-error">未设置 API Key</div>`;
-            return;
-        }
-
-        const selectedPrompt = cfg.systemPrompts[cfg.currentPromptIndex];
-        if (!selectedPrompt) {
-            clearInterval(loadingTimer);
-            translateBody.innerHTML = `<div class="translate-error">未找到指定的 System Prompt</div>`;
-            return;
-        }
-
-        const translateContent = document.getElementById('gmTranslateContent');
-        fetchStreamTranslation({
-            endpoint: cfg.endpoint,
-            model: cfg.model,
-            apiKey: cfg.apiKey,
-            systemPrompt: selectedPrompt.prompt,
-            text: selectedText
-        }, (chunk) => {
-            translateContent.textContent += chunk;
-        }).then(() => {
-            clearInterval(loadingTimer);
-            loadingEl.remove();
-            console.log('[Dotrans] Info: 翻译完成');
-        }).catch(err => {
-            clearInterval(loadingTimer);
-            loadingEl.remove();
-            translateContent.innerHTML = `<div class="translate-error">${err.message}</div>`;
-            console.error('[Dotrans] Error: 请求错误:', err);
-        });
     });
 
-    function showTranslatePanel() {
-        console.log('[Dotrans] Info: 正在打开翻译面板...');
-        if (!translatePanel) {
-            translatePanel = document.createElement('div');
-            translatePanel.className = 'translate-panel';
-            translatePanel.innerHTML = `
-                <div class="translate-header">
-                    <div class="translate-title">翻译结果</div>
-                    <div class="translate-close">&times;</div>
-                </div>
-                <div class="translate-body"></div>
-            `;
-            document.body.appendChild(translatePanel);
+    function showDotPanel() {
+        try {
+            console.log('[DOT] Info: 正在打开处理面板...');
+            if (!dotPanel) {
+                dotPanel = document.createElement('div');
+                dotPanel.className = 'dot-panel';
+                dotPanel.innerHTML = `
+                    <div class="dot-header">
+                        <div class="dot-title">请稍候</div>
+                        <div class="dot-close">&times;</div>
+                    </div>
+                    <div class="dot-body"></div>
+                `;
+                document.body.appendChild(dotPanel);
 
-            translatePanel.querySelector('.translate-close').addEventListener('click', () => {
-                translatePanel.classList.add('hide');
-                setTimeout(() => {
-                    translatePanel.remove();
-                    translatePanel = null;
-                }, 300);
-            });
-        } else {
-            translatePanel.classList.remove('hide');
+                dotPanel.querySelector('.dot-close').addEventListener('click', () => {
+                    try {
+                        dotPanel.classList.add('hide');
+                        setTimeout(() => {
+                            dotPanel.remove();
+                            dotPanel = null;
+                        }, 300);
+                    } catch (error) {
+                        handleError(error, 'closeDotPanel');
+                    }
+                });
+            } else {
+                dotPanel.classList.remove('hide');
+            }
+        } catch (error) {
+            handleError(error, 'showDotPanel');
         }
     }
-    
-    async function fetchStreamTranslation({ endpoint, model, apiKey, systemPrompt, text }, onChunk) {
-        console.log(`[Dotrans] Info: 系统提示词：${systemPrompt}`);
-        console.log(`[Dotrans] Info: 用户输入：${text}`);
-        const payload = {
-            model: model,
-            messages: [
-                { role: 'system', content: systemPrompt },
-                { role: 'user', content: text }
-            ],
-            stream: true
-        };
 
-        const response = await fetch(endpoint, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${apiKey}`
-            },
-            body: JSON.stringify(payload)
-        });
-
-        if (!response.ok) {
-            let errorText = await response.text();
-            throw new Error(`翻译请求失败: ${errorText}`);
-        }
-
-        const reader = response.body.getReader();
-        let partial = '';
-        let doneFlag = false;
-        while (!doneFlag) {
-            const { done, value } = await reader.read();
-            if (done) break;
-            const chunkText = new TextDecoder('utf-8').decode(value);
-            const lines = chunkText.split('\n').filter(line => line.trim());
-            for (let line of lines) {
-                if (line.startsWith('data: ')) {
-                    const jsonStr = line.replace(/^data: /, '');
-                    if (jsonStr === '[DONE]') {
-                        doneFlag = true;
-                        break;
-                    }
-                    try {
-                        const parsed = JSON.parse(jsonStr);
-                        const delta = parsed.choices[0].delta.content || '';
-                        if (delta) {
-                            partial += delta;
-                            onChunk(delta);
-                        }
-                    } catch (e) {
-                        console.error('[Dotrans] Error: SSE解析出错', e);
-                    }
-                }
-            }
-        }
-        return partial;
+    function escapeHtml(str) {
+        return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }
 })();

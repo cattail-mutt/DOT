@@ -149,7 +149,7 @@
     transition: transform 0.1s ease;
 }
 
-.translate-panel {
+.dot-panel {
     position: fixed;
     left: 20px;
     bottom: 20px;
@@ -163,23 +163,23 @@
     transition: opacity 0.3s ease;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
-.translate-panel.hide {
+.dot-panel.hide {
     opacity: 0;
     pointer-events: none;
 }
-.translate-header {
+.dot-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 14px 16px;
     border-bottom: 1px solid #404040;
 }
-.translate-title {
+.dot-title {
     font-size: 15px;
     font-weight: 500;
     letter-spacing: 0.5px;
 }
-.translate-close {
+.dot-close {
     cursor: pointer;
     color: #888;
     font-size: 20px;
@@ -188,10 +188,10 @@
     transition: color 0.2s;
     padding: 4px;
 }
-.translate-close:hover {
+.dot-close:hover {
     color: #fff;
 }
-.translate-body {
+.dot-body {
     padding: 12px 16px;
     font-size: 13px;
     line-height: 1.4;
@@ -200,18 +200,18 @@
     overflow-y: auto;
 }
 
-.translate-text {
+.dot-text {
     white-space: normal;
     color: #fff;
 }
-.translate-text a {
+.dot-text a {
     color: #58a6ff;
     text-decoration: none;
 }
-.translate-text a:hover {
+.dot-text a:hover {
     text-decoration: underline;
 }
-.translate-text blockquote {
+.dot-text blockquote {
     background: #2a2a2a;
     border-left: 4px solid #888;
     color: #aaa;
@@ -219,51 +219,51 @@
     padding: 0.5em 1em;
     border-radius: 0 4px 4px 0;
 }
-.translate-text blockquote blockquote {
+.dot-text blockquote blockquote {
     background: #262626;
     border-left-color: #666;
     margin: 0.5em 0;
 }
-.translate-text blockquote blockquote blockquote {
+.dot-text blockquote blockquote blockquote {
     background: #222;
     border-left-color: #404040;
 }
-.translate-text code {
+.dot-text code {
     background: #1e1e1e;
     padding: 2px 4px;
     border-radius: 3px;
     font-family: monospace;
 }
-.translate-text h1,
-.translate-text h2,
-.translate-text h3,
-.translate-text h4,
-.translate-text h5,
-.translate-text h6 {
+.dot-text h1,
+.dot-text h2,
+.dot-text h3,
+.dot-text h4,
+.dot-text h5,
+.dot-text h6 {
     margin-top: 1em;
     margin-bottom: 0.5em;
     color: #fff;
 }
-.translate-text hr {
+.dot-text hr {
     border: none;
     border-top: 1px solid #404040;
     margin: 2em 0;
 }
-.translate-text ol {
+.dot-text ol {
     list-style: decimal outside;
     margin: 0.8em 0;
     padding-left: 2em;
 }
-.translate-text ol ol {
+.dot-text ol ol {
     list-style: lower-alpha outside;
 }
-.translate-text ol ol ol {
+.dot-text ol ol ol {
     list-style: lower-roman outside;
 }
-.translate-text p {
+.dot-text p {
     margin: 0.5em 0;
 }
-.translate-text pre {
+.dot-text pre {
     background: #1a1a1a;
     padding: 1em;
     border-radius: 6px;
@@ -271,13 +271,13 @@
     margin: 1em 0;
     overflow-x: auto;
 }
-.translate-text pre code {
+.dot-text pre code {
     color: #e6e6e6;
     background: transparent;
     padding: 0;
     border-radius: 0;
 }
-.translate-text :not(pre) > code {
+.dot-text :not(pre) > code {
     background: #2a2a2a;
     color: #e6e6e6;
     padding: 2px 5px;
@@ -285,7 +285,7 @@
     font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
     font-size: 0.9em;
 }
-.translate-text table {
+.dot-text table {
     border-collapse: separate;
     border-spacing: 0;
     width: 100%;
@@ -294,11 +294,11 @@
     overflow: hidden;
     border: 1px solid #404040;
 }
-.translate-text td {
+.dot-text td {
     padding: 8px 10px;
     border-bottom: 1px solid #404040;
 }
-.translate-text th {
+.dot-text th {
     background: #363636;
     color: #fff;
     font-weight: 600;
@@ -306,38 +306,38 @@
     padding: 8px 10px;
     border-bottom: 2px solid #404040;
 }
-.translate-text tr:nth-child(even) {
+.dot-text tr:nth-child(even) {
     background: #2a2a2a;
 }
-.translate-text tr:last-child td {
+.dot-text tr:last-child td {
     border-bottom: none;
 }
-.translate-text th:last-child {
+.dot-text th:last-child {
     border-right: none;
 }
-.translate-text ul {
+.dot-text ul {
     list-style: disc outside;
     margin: 0.8em 0;
     padding-left: 2em;
 }
-.translate-text ul ul {
+.dot-text ul ul {
     list-style: circle outside;
 }
-.translate-text ul ul ul {
+.dot-text ul ul ul {
     list-style: square outside;
 }
 
-.translate-body::-webkit-scrollbar {
+.dot-body::-webkit-scrollbar {
     width: 8px;
 }
-.translate-body::-webkit-scrollbar-track {
+.dot-body::-webkit-scrollbar-track {
     background: #1e1e1e;
 }
-.translate-body::-webkit-scrollbar-thumb {
+.dot-body::-webkit-scrollbar-thumb {
     background-color: #666;
     border-radius: 4px;
 }
-.translate-body::-webkit-scrollbar-thumb:hover {
+.dot-body::-webkit-scrollbar-thumb:hover {
     background-color: #888;
 }
 
