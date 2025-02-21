@@ -29,7 +29,7 @@ DOT 是一款基于 OpenAI [Compatible] API 的即时交互脚本，支持流式
 
 ## 文件结构
 
-- `DOT.user.js` - 主脚本文件
+- `dot.js` - 主脚本文件
 - `resources/style.css` - 样式文件
 - `resources/prompts.yaml` - Prompt 配置文件
 
