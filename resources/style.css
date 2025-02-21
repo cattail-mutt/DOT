@@ -326,50 +326,6 @@
 .translate-text ul ul ul {
     list-style: square outside;
 }
-.translate-text thinking {
-    display: block;
-    margin: 1em 0;
-    padding: 1em;
-    border-radius: 6px;
-    background: #1e1e1e;
-    position: relative;
-    cursor: pointer;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-}
-.translate-text thinking::before {
-    content: "▼ 思考过程";
-    display: block;
-    margin-bottom: 8px;
-    color: #888;
-    font-size: 0.9em;
-}
-.translate-text thinking.collapsed {
-    content: "思考过程 ▶";
-    max-height: 2.5em;
-}
-.translate-text reasoning {
-    display: block;
-    margin: 1em 0;
-    padding: 1em;
-    border-radius: 6px;
-    background: #1e1e1e;
-    position: relative;
-    cursor: pointer;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-}
-.translate-text reasoning::before {
-    content: "▼ 推理过程";
-    display: block;
-    margin-bottom: 8px;
-    color: #888;
-    font-size: 0.9em;
-}
-.translate-text reasoning.collapsed {
-    content: "推理过程 ▶";
-    max-height: 2.5em;
-}
 
 .translate-error {
     color: red;
