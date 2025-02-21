@@ -199,10 +199,60 @@
     max-height: 66vh; 
     overflow-y: auto;
 }
+
 .translate-text {
-    white-space: pre-wrap;
+    white-space: normal;
     color: #fff;
 }
+.translate-text h1,
+.translate-text h2,
+.translate-text h3,
+.translate-text h4,
+.translate-text h5,
+.translate-text h6 {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    color: #fff;
+}
+.translate-text p {
+    margin: 0.5em 0;
+}
+.translate-text code {
+    background: #1e1e1e;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: monospace;
+}
+.translate-text pre {
+    background: #1e1e1e;
+    padding: 12px;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 0.5em 0;
+}
+.translate-text pre code {
+    background: none;
+    padding: 0;
+}
+.translate-text ul,
+.translate-text ol {
+    margin: 0.5em 0;
+    padding-left: 1.5em;
+}
+.translate-text blockquote {
+    margin: 0.5em 0;
+    padding-left: 1em;
+    border-left: 3px solid #404040;
+    color: #888;
+}
+.translate-text a {
+    color: #58a6ff;
+    text-decoration: none;
+}
+.translate-text a:hover {
+    text-decoration: underline;
+}
+
 .translate-error {
     color: red;
     white-space: pre-wrap;
