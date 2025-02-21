@@ -213,42 +213,26 @@
 }
 .translate-text blockquote {
     background: #2a2a2a;
-    border-left: 4px solid #404040;
+    border-left: 4px solid #888;
+    color: #aaa;
     margin: 1em 0;
     padding: 0.5em 1em;
-    color: #aaa;
     border-radius: 0 4px 4px 0;
 }
 .translate-text blockquote blockquote {
-    border-left-color: #666;
     background: #262626;
+    border-left-color: #666;
     margin: 0.5em 0;
 }
 .translate-text blockquote blockquote blockquote {
-    border-left-color: #888;
     background: #222;
+    border-left-color: #404040;
 }
 .translate-text code {
     background: #1e1e1e;
     padding: 2px 4px;
     border-radius: 3px;
     font-family: monospace;
-}
-.translate-text code.language-xml,
-.translate-text code.language-html {
-    color: #e6e6e6;
-}
-.translate-text code.language-xml .token.attr-name,
-.translate-text code.language-html .token.attr-name {
-    color: #79c0ff;
-}
-.translate-text code.language-xml .token.attr-value,
-.translate-text code.language-html .token.attr-value {
-    color: #a5d6ff;
-}
-.translate-text code.language-xml .token.tag,
-.translate-text code.language-html .token.tag {
-    color: #7ee787;
 }
 .translate-text h1,
 .translate-text h2,
@@ -318,8 +302,8 @@
     background: #363636;
     color: #fff;
     font-weight: 600;
-    padding: 10px;
     text-align: left;
+    padding: 8px 10px;
     border-bottom: 2px solid #404040;
 }
 .translate-text tr:nth-child(even) {
@@ -327,6 +311,9 @@
 }
 .translate-text tr:last-child td {
     border-bottom: none;
+}
+.translate-text th:last-child {
+    border-right: none;
 }
 .translate-text ul {
     list-style: disc outside;
@@ -338,6 +325,50 @@
 }
 .translate-text ul ul ul {
     list-style: square outside;
+}
+.translate-text thinking {
+    display: block;
+    margin: 1em 0;
+    padding: 1em;
+    border-radius: 6px;
+    background: #1e1e1e;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+.translate-text thinking::before {
+    content: "▼ 思考过程";
+    display: block;
+    margin-bottom: 8px;
+    color: #888;
+    font-size: 0.9em;
+}
+.translate-text thinking.collapsed {
+    content: "思考过程 ▶";
+    max-height: 2.5em;
+}
+.translate-text reasoning {
+    display: block;
+    margin: 1em 0;
+    padding: 1em;
+    border-radius: 6px;
+    background: #1e1e1e;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+.translate-text reasoning::before {
+    content: "▼ 推理过程";
+    display: block;
+    margin-bottom: 8px;
+    color: #888;
+    font-size: 0.9em;
+}
+.translate-text reasoning.collapsed {
+    content: "推理过程 ▶";
+    max-height: 2.5em;
 }
 
 .translate-error {
