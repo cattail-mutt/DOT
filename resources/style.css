@@ -204,6 +204,52 @@
     white-space: normal;
     color: #fff;
 }
+.translate-text a {
+    color: #58a6ff;
+    text-decoration: none;
+}
+.translate-text a:hover {
+    text-decoration: underline;
+}
+.translate-text blockquote {
+    background: #2a2a2a;
+    border-left: 4px solid #404040;
+    margin: 1em 0;
+    padding: 0.5em 1em;
+    color: #aaa;
+    border-radius: 0 4px 4px 0;
+}
+.translate-text blockquote blockquote {
+    border-left-color: #666;
+    background: #262626;
+    margin: 0.5em 0;
+}
+.translate-text blockquote blockquote blockquote {
+    border-left-color: #888;
+    background: #222;
+}
+.translate-text code {
+    background: #1e1e1e;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: monospace;
+}
+.translate-text code.language-xml,
+.translate-text code.language-html {
+    color: #e6e6e6;
+}
+.translate-text code.language-xml .token.attr-name,
+.translate-text code.language-html .token.attr-name {
+    color: #79c0ff;
+}
+.translate-text code.language-xml .token.attr-value,
+.translate-text code.language-html .token.attr-value {
+    color: #a5d6ff;
+}
+.translate-text code.language-xml .token.tag,
+.translate-text code.language-html .token.tag {
+    color: #7ee787;
+}
 .translate-text h1,
 .translate-text h2,
 .translate-text h3,
@@ -214,43 +260,84 @@
     margin-bottom: 0.5em;
     color: #fff;
 }
+.translate-text hr {
+    border: none;
+    border-top: 1px solid #404040;
+    margin: 2em 0;
+}
+.translate-text ol {
+    list-style: decimal outside;
+    margin: 0.8em 0;
+    padding-left: 2em;
+}
+.translate-text ol ol {
+    list-style: lower-alpha outside;
+}
+.translate-text ol ol ol {
+    list-style: lower-roman outside;
+}
 .translate-text p {
     margin: 0.5em 0;
 }
-.translate-text code {
-    background: #1e1e1e;
-    padding: 2px 4px;
-    border-radius: 3px;
-    font-family: monospace;
-}
 .translate-text pre {
-    background: #1e1e1e;
-    padding: 12px;
-    border-radius: 4px;
+    background: #1a1a1a;
+    padding: 1em;
+    border-radius: 6px;
+    border: 1px solid #333;
+    margin: 1em 0;
     overflow-x: auto;
-    margin: 0.5em 0;
 }
 .translate-text pre code {
-    background: none;
+    color: #e6e6e6;
+    background: transparent;
     padding: 0;
+    border-radius: 0;
 }
-.translate-text ul,
-.translate-text ol {
-    margin: 0.5em 0;
-    padding-left: 1.5em;
+.translate-text :not(pre) > code {
+    background: #2a2a2a;
+    color: #e6e6e6;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    font-size: 0.9em;
 }
-.translate-text blockquote {
-    margin: 0.5em 0;
-    padding-left: 1em;
-    border-left: 3px solid #404040;
-    color: #888;
+.translate-text table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    margin: 1em 0;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #404040;
 }
-.translate-text a {
-    color: #58a6ff;
-    text-decoration: none;
+.translate-text td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #404040;
 }
-.translate-text a:hover {
-    text-decoration: underline;
+.translate-text th {
+    background: #363636;
+    color: #fff;
+    font-weight: 600;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 2px solid #404040;
+}
+.translate-text tr:nth-child(even) {
+    background: #2a2a2a;
+}
+.translate-text tr:last-child td {
+    border-bottom: none;
+}
+.translate-text ul {
+    list-style: disc outside;
+    margin: 0.8em 0;
+    padding-left: 2em;
+}
+.translate-text ul ul {
+    list-style: circle outside;
+}
+.translate-text ul ul ul {
+    list-style: square outside;
 }
 
 .translate-error {
