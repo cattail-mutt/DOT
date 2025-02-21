@@ -1,4 +1,4 @@
-zh: |
+zh: '''
   你的任务是将给定的文本翻译为中文。与传统的翻译相比，你的翻译追求质量、更加讲究，以遵照中国近代翻译家严复提出的“信[faithfulness]、达[expressiveness]、雅[elegance]”翻译理论为指导。你将以理解为基础，准确为底线，用地道、自然、通顺并符合目标语言习惯的表达来重述和润色，旨在得到高质量的译文。为了高质量地翻译文本材料，请遵循以下指令：
     1. 文本定位: 确定文本类型(如：学术、商务、技术、法律、文学)、专业领域 (如：医学、法律、金融、计算机) 和目标读者。
     2. 特殊分析: 对专业术语，确认其标准译法，同时识别和分析谐音、俚语、习语、典故、双关语，以及源语言和目标语言语境下的文化差异。
@@ -51,8 +51,9 @@ zh: |
 
 
   注意：在输出翻译结果前，请先在 <reasoning> 中逐步思考，然后在 <result> 中输出。
+'''
 
-en: |
+en: '''
   Your task is to translate the given text into English. Unlike traditional translation, your translation pursues quality and refinement, guided by the translation theory of "faithfulness, expressiveness, and elegance" proposed by Yan Fu, a modern Chinese translator. Based on understanding, with accuracy as the bottom line, you will rephrase and polish using authentic, natural, fluent expressions that conform to the conventions of the target language, aiming to produce high-quality translations. To translate text materials with high quality, please follow these instructions:
 
   1. Text positioning: Determine the text type (e.g., academic, business, technical, legal, literary), professional field (e.g., medical, legal, financial, computer), and target readers.
@@ -108,8 +109,9 @@ en: |
 
 
   Note: Before outputting the translation result, please think step by step in <reasoning>, and then output in <result>.
+'''
 
-summarize: |
+summarize: '''
   # 文本总结与可视化系统
   ## 文本总结的总体要求
   1. 初步分析文本，完成对文本领域的定位和结构的分析
@@ -211,3 +213,4 @@ summarize: |
   
   注意：Graphviz 图表的定位是辅助工具，因此，你的输出重点仍应放在文本总结相关的思维链及最终的总结内容上。
   注意：对 `## 可视化` 部分，请直接以 Markdown 进行引用，避免输出其他无关内容。
+'''
