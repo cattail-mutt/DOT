@@ -22,10 +22,10 @@
     'use strict';
     
     const DEFAULT_CONFIG = {
-        endpoint: 'https://api.fakeapi.com/v1/chat/completions',
-        model: 'gemini-2.0-pro-exp',
+        endpoint: 'https://api.closeai.com/v1/chat/completions',
+        model: 'cheatgpt-4o-latest',
         apiKey: '',
-        temperature: 1.0,
+        temperature: 0.0,
         currentPromptIndex: 0,
     };
 
@@ -333,7 +333,7 @@
                 return;
             }
 
-            showDotPanel();
+            showdotPanel();
 
             const dotBody = dotPanel.querySelector('.dot-body');
             dotBody.innerHTML = `
@@ -359,10 +359,10 @@
             }
 
             // 输出完成前：使用 code pre 实时更新流的消息内容
-            const dotContent = document.getElementById('DotContent');
+            const DotContent = document.getElementById('DotContent');
             let rawText = '';
-            dotContent.innerHTML = '<pre><code></code></pre>';
-            const codeElement = dotContent.querySelector('code');
+            DotContent.innerHTML = '<pre><code></code></pre>';
+            const codeElement = DotContent.querySelector('code');
 
             await window.chatCompletion({
                 endpoint: cfg.endpoint,
@@ -380,14 +380,14 @@
             clearInterval(loadingTimer);
             dotTitle.textContent = '输出结果';
             // 输出完成后：将 code pre 中的内容进行转义并使用 marked 渲染后替换
-            dotContent.innerHTML = marked.parse(escapeHtml(rawText));
+            DotContent.innerHTML = marked.parse(escapeHtml(rawText));
             console.log('[DOT] Info: 处理完成，原始响应为：', rawText);
         } catch (error) {
             handleError(error, 'dotProcess');
         }
     });
 
-    function showDotPanel() {
+    function showdotPanel() {
         try {
             console.log('[DOT] Info: 正在打开处理面板...');
             if (!dotPanel) {
@@ -410,14 +410,14 @@
                             dotPanel = null;
                         }, 300);
                     } catch (error) {
-                        handleError(error, 'closeDotPanel');
+                        handleError(error, 'closedotPanel');
                     }
                 });
             } else {
                 dotPanel.classList.remove('hide');
             }
         } catch (error) {
-            handleError(error, 'showDotPanel');
+            handleError(error, 'showdotPanel');
         }
     }
 
