@@ -1,12 +1,13 @@
-# Dotrans - 圆点翻译
+# DOT - 圆点
 
-Dotrans 是一款基于 OpenAI [Compatible] API 的划词翻译小工具，支持流式输出，提供简洁高效的翻译体验。
+DOT 是一款基于 OpenAI [Compatible] API 的即时交互脚本，支持流式输出和 Markdown 渲染，提供简洁高效的文本处理体验。
 
 ## 功能特性
 
-- **划词翻译**：选中文本后，点击悬浮按钮即可快速翻译
-- **流式输出**：实时显示翻译结果，提升用户体验
-- **多 Prompt 支持**：可自定义和管理多个翻译 Prompt
+- **即时交互**：选中文本后，点击悬浮按钮即可快速与 API 交互
+- **流式输出**：实时显示处理结果，提升用户体验
+- **Markdown 渲染**：支持将输出内容渲染为 Markdown 格式
+- **多 Prompt 支持**：可自定义和管理多个  systemPrompt
 
 ## 配置说明
 
@@ -16,22 +17,34 @@ Dotrans 是一款基于 OpenAI [Compatible] API 的划词翻译小工具，支�
 
 | 配置项       | 说明                                                                 |
 |--------------|--------------------------------------------------------------------|
-| Model        | 采用的模型                                                           |
+| Model        | 采用的模型，例如 `gpt-4o`                    |
 | Temperature  | 采用的温度（控制生成文本的随机性，值越高结果越随机，值越低结果越确定）               |
 | Endpoint     | API 聊天补全端点，需填写完整如 `https://api.openai.com/v1/chat/completions` |
-| API Key      | API 密钥，一般以 `sk-` 开头                                 |
+| API Key      | API 密钥，一般以 `sk-` 开头                                         |
+
+- **Prompt 管理**
+  - **新增 Prompt**：添加新的系统 Prompt
+  - **编辑 Prompt**：修改现有 Prompt 的标题和内容
+  - **删除 Prompt**：移除不再需要的 Prompt
 
 ## 文件结构
 
-- `Dotrans.js` - 主脚本文件
+- `DOT.user.js` - 主脚本文件
 - `resources/style.css` - 样式文件
 - `resources/prompts.yaml` - Prompt 配置文件
 
 ## 依赖项
 
 - [js-yaml.min.js](https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js) - 用于解析 YAML 格式的 Prompt 文件
+- [marked.min.js](https://cdn.jsdelivr.net/npm/marked/marked.min.js) - 用于 Markdown 渲染
+- [chatCompletion.js](https://raw.githubusercontent.com/cattail-mutt/archive/main/openai/chatCompletion.js) - 用于调用油猴 API `GM_xmlhttpRequest`，与 OpenAI [Compatible] API 交互
+
+## 使用说明
+
+1. 安装脚本后，在任意网页选中文本。
+2. 点击悬浮按钮，DOT 会根据当前配置的 Prompt 与 API 交互。
+3. 处理结果会以流式输出的方式显示在面板中，并自动渲染为 Markdown 格式。
 
 ## 鸽子计划
 
-- 自定义配置：为不同站点配置默认提示词选项。
-- ...
+- **自定义配置**：为不同站点配置默认 Prompt 选项
