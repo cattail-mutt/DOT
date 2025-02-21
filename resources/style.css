@@ -327,14 +327,6 @@
     list-style: square outside;
 }
 
-.translate-error {
-    color: red;
-    white-space: pre-wrap;
-}
-.translate-loading {
-    color: #32CD32;
-    margin-bottom: 8px;
-}
 .translate-body::-webkit-scrollbar {
     width: 8px;
 }
