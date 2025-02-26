@@ -183,6 +183,7 @@
     position: fixed;
     left: 20px;
     bottom: 20px;
+    width: 300px;
     z-index: 99999;
     background: #2d2d2d;
     border-radius: 8px;
@@ -191,17 +192,25 @@
     opacity: 1;
     transition: opacity 0.3s ease;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    min-width: 300px;
-    min-height: 100px;
+    min-width: 200px;
+    min-height: 300px;
     resize: both;
 }
 .dot-panel.resizing {
     transition: none;
     user-select: none;
 }
+.dot-panel.dragging {
+    transition: none;
+    user-select: none;
+    opacity: 0.8;
+}
 .dot-panel.hide {
     opacity: 0;
     pointer-events: none;
+}
+.dot-panel .dot-header {
+    cursor: move;
 }
 .dot-header {
     display: flex;
