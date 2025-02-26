@@ -194,9 +194,7 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     min-width: 200px;
     min-height: 300px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+    resize: both;
 }
 .dot-panel.resizing {
     transition: none;
@@ -243,11 +241,10 @@
     font-size: 13px;
     line-height: 1.4;
     min-height: 80px;
-    flex: 1;
+    max-height: 66vh; 
     overflow-y: auto;
-    overflow-x: auto;
-    word-wrap: break-word;
 }
+
 .dot-text {
     white-space: normal;
     color: #fff;
