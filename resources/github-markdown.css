@@ -112,6 +112,7 @@
 .markdown-body samp {
   font-family: monospace;
   font-size: 1em;
+  color: #f0f6fc;
 }
 
 .markdown-body figure {
@@ -310,6 +311,7 @@
   margin: 0;
   padding: 0 1em;
   color: #9198a1;
+  background-color: #2d2d2d;
   border-left: .25em solid #3d444d;
 }
 
@@ -1101,3 +1103,5 @@
 .markdown-body .highlight pre:has(+.zeroclipboard-container) {
   min-height: 52px;
 }
+
+
