@@ -184,7 +184,7 @@
     left: 20px;
     bottom: 20px;
     width: 300px;
-	height: 400px;
+    height: 400px;
     z-index: 99999;
     background: #2d2d2d;
     border-radius: 8px;
@@ -198,7 +198,7 @@
     resize: both;
     display: flex;
     flex-direction: column;
-	overflow: hidden;
+    overflow: hidden;
 }
 .dot-panel.resizing {
     transition: none;
@@ -222,7 +222,7 @@
     align-items: center;
     padding: 14px 16px;
     border-bottom: 1px solid #404040;
-	flex-shrink: 0; 
+    flex-shrink: 0;
 }
 .dot-title {
     font-size: 15px;
@@ -247,135 +247,13 @@
     line-height: 1.4;
     min-height: 80px;
     overflow-y: auto;
-    flex: 1; 
-	max-height: 100%;
+    flex: 1;
+    max-height: 100%;
 }
 
 .dot-text {
     white-space: normal;
     color: #fff;
-}
-.dot-text a {
-    color: #58a6ff;
-    text-decoration: none;
-}
-.dot-text a:hover {
-    text-decoration: underline;
-}
-.dot-text blockquote {
-    background: #2a2a2a;
-    border-left: 4px solid #888;
-    color: #aaa;
-    margin: 1em 0;
-    padding: 0.5em 1em;
-    border-radius: 0 4px 4px 0;
-}
-.dot-text blockquote blockquote {
-    background: #262626;
-    border-left-color: #666;
-    margin: 0.5em 0;
-}
-.dot-text blockquote blockquote blockquote {
-    background: #222;
-    border-left-color: #404040;
-}
-.dot-text code {
-    background: #1e1e1e;
-    padding: 2px 4px;
-    border-radius: 3px;
-    font-family: monospace;
-}
-.dot-text h1,
-.dot-text h2,
-.dot-text h3,
-.dot-text h4,
-.dot-text h5,
-.dot-text h6 {
-    margin-top: 1em;
-    margin-bottom: 0.5em;
-    color: #fff;
-}
-.dot-text hr {
-    border: none;
-    border-top: 1px solid #404040;
-    margin: 2em 0;
-}
-.dot-text ol {
-    list-style: decimal outside;
-    margin: 0.8em 0;
-    padding-left: 2em;
-}
-.dot-text ol ol {
-    list-style: lower-alpha outside;
-}
-.dot-text ol ol ol {
-    list-style: lower-roman outside;
-}
-.dot-text p {
-    margin: 0.5em 0;
-}
-.dot-text pre {
-    background: #1a1a1a;
-    padding: 1em;
-    border-radius: 6px;
-    border: 1px solid #333;
-    margin: 1em 0;
-    overflow-x: auto;
-}
-.dot-text pre code {
-    color: #e6e6e6;
-    background: transparent;
-    padding: 0;
-    border-radius: 0;
-}
-.dot-text :not(pre) > code {
-    background: #2a2a2a;
-    color: #e6e6e6;
-    padding: 2px 5px;
-    border-radius: 3px;
-    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-    font-size: 0.9em;
-}
-.dot-text table {
-    border-collapse: separate;
-    border-spacing: 0;
-    width: 100%;
-    margin: 1em 0;
-    border-radius: 6px;
-    overflow: hidden;
-    border: 1px solid #404040;
-}
-.dot-text td {
-    padding: 8px 10px;
-    border-bottom: 1px solid #404040;
-}
-.dot-text th {
-    background: #363636;
-    color: #fff;
-    font-weight: 600;
-    text-align: left;
-    padding: 8px 10px;
-    border-bottom: 2px solid #404040;
-}
-.dot-text tr:nth-child(even) {
-    background: #2a2a2a;
-}
-.dot-text tr:last-child td {
-    border-bottom: none;
-}
-.dot-text th:last-child {
-    border-right: none;
-}
-.dot-text ul {
-    list-style: disc outside;
-    margin: 0.8em 0;
-    padding-left: 2em;
-}
-.dot-text ul ul {
-    list-style: circle outside;
-}
-.dot-text ul ul ul {
-    list-style: square outside;
 }
 
 .dot-body::-webkit-scrollbar {
