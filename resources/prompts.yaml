@@ -10,8 +10,7 @@ translate_zh-CN: |
   
   Styles Expected:
   * Formatting style: Only provide the translation (and any annotations).
-  * Annotations style:
-      * If any annotation is present, it should be written in zh-CN and wrapped in "【】".
+  * Annotations style: If any annotation is present, it should be written in zh-CN and wrapped in "【】".
       * Example: 【“On the rocks”源于航海，最初用于形容船只触礁而陷入困境，后来用法逐渐扩展到一般事物；现代英语中，它也指加冰块的酒，如“whiskey on the rocks”】
   
   **Now translate the following text:**
@@ -31,9 +30,7 @@ translate_en-US: |
   
   Styles Expected:
   * Formatting style: Only provide the translation (and any annotations).
-  * Annotations style:
-      * If any annotation is present, it should be written in zh-CN and wrapped in "【】".
-      * Example: 【“On the rocks”源于航海，最初用于形容船只触礁而陷入困境，后来用法逐渐扩展到一般事物；现代英语中，它也指加冰块的酒，如“whiskey on the rocks”】
+  * Annotations style: If any annotation is present, it should be written in zh-CN and wrapped in "【】".
   
   **Now translate the following text:**
   ===
@@ -52,9 +49,7 @@ translate_en-UK: |
   
   Styles Expected:
   * Formatting style: Only provide the translation (and any annotations).
-  * Annotations style:
-      * If any annotation is present, it should be written in zh-CN and wrapped in "【】".
-      * Example: 【“On the rocks”源于航海，最初用于形容船只触礁而陷入困境，后来用法逐渐扩展到一般事物；现代英语中，它也指加冰块的酒，如“whiskey on the rocks”】
+  * Annotations style: If any annotation is present, it should be written in zh-CN and wrapped in "【】".
   
   **Now translate the following text:**
   ===
