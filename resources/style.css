@@ -125,15 +125,10 @@
     color: #fff;
     border: 1px solid #1b5e20;
 }
-.alert-error {
+.alert-warning, .alert-error {
     background: #c62828;
     color: #fff;
     border: 1px solid #b71c1c;
-}
-.alert-warning {
-    background: #f9a825;
-    color: #fff;
-    border: 1px solid #f57f17;
 }
 
 .float-btn {
